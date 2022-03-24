@@ -15,221 +15,217 @@
         <source src="./audio/theme.mp3" type="audio/mpeg">
         <!-- http://soundfxcenter.com/download-sound/the-simpsons-theme-song/ -->
     </audio>
-    <audio controls>
+    <audio controls>  
         <source src="./audio/theme.mp3" type="audio/mpeg">
     </audio>
 
     
     <div class="content">
-    <h1><a href="https://www.fontspace.com/category/simpsons"><img class="title" src="./images/tic-tac-toe.png" alt="tic tac toe"></a></h1>
-    
-    
-    
-    <!-- Trigger/Open The Modal -->
-<!-- <button id="choosePlayerb">Open Modal</button> -->
+        <h1><a href="https://www.fontspace.com/category/simpsons"><img class="title" src="./images/tic-tac-toe.png" alt="tic tac toe"></a></h1>
+        
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>
-        <div class="winning_message">
-            <div class="winning_text"></div>    
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>
+                <div class="winning_message">
+                    <div class="winning_text"></div>    
+                </div>
+                <div class="buttons1">
+                    <button class="playAgain glow-on-hover"> <img src="./images/rematch.png" height="20px" alt="rematch"></button>
+                    <button class="reset glow-on-hover"> <img src="./images/reset.png" height="20px" alt="reset"></button>
+                </div>
+            </p>
         </div>
-        <div class="buttons1">
+
+        </div>
+        
+        <button class="AI glow-on-hover"><a href="ai.html"><img src="./images/computer-white.png" height="20px" alt="AI"></a></button>
+
+        <button class="twoPlayer glow-on-hover"><a href="index.html"><img src="./images/twoplayer.png" height="20px" alt="2-Player"></a></button>
+
+        <div class="gameboard">
+
+            <div class="box zero" id="0"></div>
+            <div class="box one" id="1"></div>
+            <div class="box two" id="2"></div>
+            <div class="box three" id="3"></div>
+            <div class="box four" id="4"></div>
+            <div class="box five" id="5"></div>
+            <div class="box six" id="6"></div>
+            <div class="box seven" id="7"></div>
+            <div class="box eight" id="8"></div>
+            
+        </div>
+
+        <div class="tokens"> 
+            <div id="player1">
+                <img class="characters" id="bartPlayer" src="./images/player.png" alt="Player"></a>
+                <span class="hvr-pulse" id="X"><div id="bart">
+                    <div class="head">
+                        <div class="no-border body hair hair1"></div>
+                        <div class="no-border body hair hair2"></div>
+                        <div class="no-border body hair hair3"></div>
+                        <div class="no-border body hair hair4"></div>
+                        <div class="no-border body hair hair5"></div>
+                        <div class="no-border body hair hair6"></div>
+                        <div class="no-border body hair hair7"></div>
+                        <div class="no-border body hair hair8"></div>
+                        <div class="no-border body hair hair9"></div>
+                        <div class="body mouth-lip2"></div>
+                        <div class="no-border body head-left1"></div>
+                        <div class="no-border body head-left2"></div>
+                        <div class="no-border body head-left3"></div>
+                        <div class="no-border body head-left4"></div>
+                        <div class="no-border body head-left5"></div>
+                        <div class="no-border body head-left6"></div>
+                        <div class="no-border body head-left7"></div>
+                        <div class="body eyelid"></div>
+                        <div class="no-border body mouth"></div>
+                        <div class="body mouth-lip"></div>
+                        <div class="no-border body head-right2"></div>
+                        <div class="no-border body head-right1"></div>
+                        <div class="no-border body head-right3"></div>
+                        
+                        <!-- The ear -->
+                        <div class="body ear">
+                            <div class="no-border inner1"></div>
+                            <div class="no-border inner2"></div>
+                            <div class="no-border body clip"></div>
+                        </div>
+                        
+                        <!-- The right eye -->
+                        <div class="right-eye">
+                            <div class="no-border right-eye-pupil"></div>
+                    <div class="no-border body eyelid-top"></div>
+                    <div class="no-border body eyelid-bottom"></div>
+                        </div>
+                        
+                        <!-- The nose -->
+                        <div class="no-border body nose"></div>
+                        <div class="body nose-tip"></div>
+                        
+                        <!-- The left eye -->
+                        <div class="left-eye">
+                            <div class="no-border left-eye-pupil"></div>
+                    <div class="no-border body eyelid-top"></div>
+                    <div class="no-border body eyelid-bottom"></div>
+                        </div>
+                    
+                        <div class="no-border mouth-smile"></div>
+                    </div>
+                </div></span>
+                <div class="player">
+                    <img src="./images/score.png" height="20px" alt="score">
+                    <div class="score" id="playerX"></div>
+                </div>
+            </div>  
+            <div id="player2">
+                <img class="characters" id="lisaPlayer" src="./images/player.png" alt="Player"></a>
+                <span class="hvr-pulse" id="O">
+                    <div id="lisa">
+                    <div class="head">
+                    
+                    <div class="no-border body head-main"></div>
+                        <div class="no-border body head-main2"></div>
+                        <div class="no-border body head-main3"></div>
+                    
+                    <div class="no-border hair9"></div>
+                    <div class="no-border hair10"></div>
+                    
+                    <div class="body hair hair1"></div>
+                    <div class="body hair hair2"></div>
+                    <div class="body hair hair3"></div>
+                    <div class="body hair hair4"></div>
+                    <div class="body hair hair5"></div>
+                    <div class="body hair hair6"></div>
+                    <div class="body hair hair7"></div>
+                    <div class="body hair hair8"></div>
+                        
+                        <div class="body mouth-lip2"></div>
+                        <div class="body mouth-lip"></div>
+                        <div class="no-border body neck"></div>
+                        <div class="no-border body mouth"></div>
+                        <div class="no-border body neck2"></div>
+                        <div class="no-border body neck3"></div>
+                        <div class="no-border mouth-smile"></div>
+                    
+                        <!-- The ear -->
+                        <div class="body ear">
+                            <div class="no-border inner1"></div>
+                            <div class="no-border inner2"></div>
+                            <div class="no-border body clip"></div>
+                        </div>
+                    
+                        <div class="no-border eyelash1 eyelash"></div>
+                        <div class="no-border eyelash2 eyelash"></div>
+                        <div class="no-border eyelash3 eyelash"></div>
+                        <div class="no-border eyelash4 eyelash"></div>
+                        <div class="no-border eyelash5 eyelash"></div>
+                        <div class="no-border eyelash6 eyelash"></div>
+                        <div class="no-border eyelash7 eyelash"></div>
+                        <div class="no-border eyelash8 eyelash"></div>
+                        
+                        <!-- The right eye -->
+                        <div class="right-eye">
+                            <div class="no-border right-eye-pupil"></div>
+                    <div class="no-border body eyelid-top"></div>
+                    <div class="no-border body eyelid-bottom"></div>
+                        </div>
+                        
+                        <!-- The nose -->
+                        <div class="no-border body nose"></div>
+                        <div class="body nose-tip"></div>
+                        
+                        <!-- The left eye -->
+                        <div class="left-eye">
+                            <div class="no-border left-eye-pupil"></div>
+                    <div class="no-border body eyelid-top"></div>
+                    <div class="no-border body eyelid-bottom"></div>
+                        </div>
+                    
+                    <div class="necklace necklace1"></div>
+                    <div class="necklace necklace2"></div>
+                    <div class="necklace necklace3"></div>
+                    <div class="necklace necklace5"></div>
+                    <div class="necklace necklace4"></div>
+                    </div>
+                </div></span> 
+                <div class="player">
+                    <img src="./images/score.png" height="20px" alt="score">
+                    <div class="score" id="playerO"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            
+            <div id="player1">
+                <div class="player">
+                    <img src="./images/draw.png" height="20px" alt="draw"> 
+                    <div class="score" id="draw"></div>
+                </div>
+            </div>  
+                    
+        </div>
+        
+        <div class="buttons">
             <button class="playAgain glow-on-hover"> <img src="./images/rematch.png" height="20px" alt="rematch"></button>
             <button class="reset glow-on-hover"> <img src="./images/reset.png" height="20px" alt="reset"></button>
         </div>
-    </p>
-  </div>
 
-</div>
-    
-    <button class="AI glow-on-hover"><a href="ai.html"><img src="./images/computer-white.png" height="20px" alt="AI"></a></button>
-
-    <button class="twoPlayer glow-on-hover"><a href="index.html"><img src="./images/twoplayer.png" height="20px" alt="2-Player"></a></button>
-
-    <div class="gameboard">
-
-        <div class="box zero" id="0"></div>
-        <div class="box one" id="1"></div>
-        <div class="box two" id="2"></div>
-        <div class="box three" id="3"></div>
-        <div class="box four" id="4"></div>
-        <div class="box five" id="5"></div>
-        <div class="box six" id="6"></div>
-        <div class="box seven" id="7"></div>
-        <div class="box eight" id="8"></div>
         
-    </div>
 
-    <div class="tokens"> 
-        <div id="player1">
-            <img class="characters" id="bartPlayer" src="./images/player.png" alt="Player"></a>
-            <span class="hvr-pulse" id="X"><div id="bart">
-                <div class="head">
-                    <div class="no-border body hair hair1"></div>
-                    <div class="no-border body hair hair2"></div>
-                    <div class="no-border body hair hair3"></div>
-                    <div class="no-border body hair hair4"></div>
-                    <div class="no-border body hair hair5"></div>
-                    <div class="no-border body hair hair6"></div>
-                    <div class="no-border body hair hair7"></div>
-                    <div class="no-border body hair hair8"></div>
-                    <div class="no-border body hair hair9"></div>
-                    <div class="body mouth-lip2"></div>
-                    <div class="no-border body head-left1"></div>
-                    <div class="no-border body head-left2"></div>
-                    <div class="no-border body head-left3"></div>
-                    <div class="no-border body head-left4"></div>
-                    <div class="no-border body head-left5"></div>
-                    <div class="no-border body head-left6"></div>
-                    <div class="no-border body head-left7"></div>
-                    <div class="body eyelid"></div>
-                    <div class="no-border body mouth"></div>
-                    <div class="body mouth-lip"></div>
-                    <div class="no-border body head-right2"></div>
-                    <div class="no-border body head-right1"></div>
-                    <div class="no-border body head-right3"></div>
-                    
-                    <!-- The ear -->
-                    <div class="body ear">
-                        <div class="no-border inner1"></div>
-                        <div class="no-border inner2"></div>
-                        <div class="no-border body clip"></div>
-                    </div>
-                    
-                    <!-- The right eye -->
-                    <div class="right-eye">
-                        <div class="no-border right-eye-pupil"></div>
-                <div class="no-border body eyelid-top"></div>
-                <div class="no-border body eyelid-bottom"></div>
-                    </div>
-                    
-                    <!-- The nose -->
-                    <div class="no-border body nose"></div>
-                    <div class="body nose-tip"></div>
-                    
-                    <!-- The left eye -->
-                    <div class="left-eye">
-                        <div class="no-border left-eye-pupil"></div>
-                <div class="no-border body eyelid-top"></div>
-                <div class="no-border body eyelid-bottom"></div>
-                    </div>
-                
-                    <div class="no-border mouth-smile"></div>
-                </div>
-            </div></span>
-            <div class="player">
-                <img src="./images/score.png" height="20px" alt="score">
-                <div class="score" id="playerX"></div>
-            </div>
-        </div>  
-        <div id="player2">
-            <img class="characters" id="lisaPlayer" src="./images/player.png" alt="Player"></a>
-            <span class="hvr-pulse" id="O">
-                <div id="lisa">
-                <div class="head">
-                
-                <div class="no-border body head-main"></div>
-                    <div class="no-border body head-main2"></div>
-                    <div class="no-border body head-main3"></div>
-                
-                <div class="no-border hair9"></div>
-                <div class="no-border hair10"></div>
-                
-                <div class="body hair hair1"></div>
-                <div class="body hair hair2"></div>
-                <div class="body hair hair3"></div>
-                <div class="body hair hair4"></div>
-                <div class="body hair hair5"></div>
-                <div class="body hair hair6"></div>
-                <div class="body hair hair7"></div>
-                <div class="body hair hair8"></div>
-                    
-                    <div class="body mouth-lip2"></div>
-                    <div class="body mouth-lip"></div>
-                    <div class="no-border body neck"></div>
-                    <div class="no-border body mouth"></div>
-                    <div class="no-border body neck2"></div>
-                    <div class="no-border body neck3"></div>
-                    <div class="no-border mouth-smile"></div>
-                
-                    <!-- The ear -->
-                    <div class="body ear">
-                        <div class="no-border inner1"></div>
-                        <div class="no-border inner2"></div>
-                        <div class="no-border body clip"></div>
-                    </div>
-                
-                    <div class="no-border eyelash1 eyelash"></div>
-                    <div class="no-border eyelash2 eyelash"></div>
-                    <div class="no-border eyelash3 eyelash"></div>
-                    <div class="no-border eyelash4 eyelash"></div>
-                    <div class="no-border eyelash5 eyelash"></div>
-                    <div class="no-border eyelash6 eyelash"></div>
-                    <div class="no-border eyelash7 eyelash"></div>
-                    <div class="no-border eyelash8 eyelash"></div>
-                    
-                    <!-- The right eye -->
-                    <div class="right-eye">
-                        <div class="no-border right-eye-pupil"></div>
-                <div class="no-border body eyelid-top"></div>
-                <div class="no-border body eyelid-bottom"></div>
-                    </div>
-                    
-                    <!-- The nose -->
-                    <div class="no-border body nose"></div>
-                    <div class="body nose-tip"></div>
-                    
-                    <!-- The left eye -->
-                    <div class="left-eye">
-                        <div class="no-border left-eye-pupil"></div>
-                <div class="no-border body eyelid-top"></div>
-                <div class="no-border body eyelid-bottom"></div>
-                    </div>
-                
-                <div class="necklace necklace1"></div>
-                <div class="necklace necklace2"></div>
-                <div class="necklace necklace3"></div>
-                <div class="necklace necklace5"></div>
-                <div class="necklace necklace4"></div>
-                </div>
-            </div></span> 
-            <div class="player">
-                <img src="./images/score.png" height="20px" alt="score">
-                <div class="score" id="playerO"></div>
-            </div>
+        <div id="choosePlayer">
+        
+            <img src="./images/choose.png" height="50px" alt="Choose Your Player">
+
         </div>
-    </div>
 
-    <div class="container">
-         
-        <div id="player1">
-            <div class="player">
-                <img src="./images/draw.png" height="20px" alt="draw"> 
-                <div class="score" id="draw"></div>
-            </div>
-        </div>  
-                   
-    </div>
-    
-    <div class="buttons">
-        <button class="playAgain glow-on-hover"> <img src="./images/rematch.png" height="20px" alt="rematch"></button>
-        <button class="reset glow-on-hover"> <img src="./images/reset.png" height="20px" alt="reset"></button>
-    </div>
-
-    
-
-    <div id="choosePlayer">
-    
-        <img src="./images/choose.png" height="50px" alt="Choose Your Player">
 
     </div>
 
-    
-
-</div>
 <!-- <script src="js/simpson-ai-harder.js"></script> -->
 <script src="js/simpson-ai.js"></script>
 </body>

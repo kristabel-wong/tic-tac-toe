@@ -125,7 +125,6 @@ const bart = '<div id="bart">' +
 '</div>' +
 '</div>';
 
-const wins = '<img src="https://see.fontimg.com/api/renderfont4/p07r/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMTIxMjEyIiwiYmdjIjoiI0M5QUFBQSIsInQiOjF9/d2lucyE/simpsonfont.png" height="50px" alt="wins">';
 
 const drawImg = '<img src="./images/draw2.jpg" height="200px"> <img src="./images/its-a-draw.png" height="50">'
 
@@ -153,14 +152,14 @@ $('#draw').text(`${draw}`);
 $('#X').on('click', function () {
     person = bart;
     computer = lisa;
-    personDance = '<img src="./images/bart-dance.gif" height="200px">';
+    personDance = '<img src="./images/bart-dance.gif" height="200px">'; // victory dances
     computerDance = '<img src="./images/lisa-dance.gif" height="200px">';
-    winP = '<img src="./images/bart-win.png" height="50px">';
+    winP = '<img src="./images/bart-win.png" height="50px">'; // winning message set up
     winC = '<img src="./images/lisa-win.png" height="50px">';
     personScore = '#playerX';
     compScore = '#playerO';
 
-    $('#lisaPlayer').attr("src", "./images/computer.png");
+    $('#lisaPlayer').attr("src", "./images/computer.png"); // make computer appear over lisa token
 
     if ( $('.box').html() === "") { // if the grid is empty, player token can be chosen. This way, it cannot be changed half way through
     }
@@ -189,7 +188,7 @@ $('#O').on('click', function () { // choosing Lisa
 
 let randomNum = 0;
 
-function getRandom(max) {
+function getRandom(max) {  // random number generated for comp choices
     randomNum = Math.floor(Math.random() * max);
 }
 
@@ -197,32 +196,32 @@ function getRandom(max) {
 
 $('.box').on('click', function () { // applies to all box, but will choose specific box
 
-    if ($('.winning_text').text() !== "" ) {
+    if ($('.winning_text').text() !== "" ) { // i can't place anymore token if there is a winning message
 
-    } else if ( $(this).html() === "") {
+    } else if ( $(this).html() === "") { // if the particular box is empty
     let available = [];
       
-            $( this ).html(`${person}`);
+        $( this ).html(`${person}`); // player picks
        
-            for (let i = 0; i < 9; i++) { // check for which boxes are available
-                if ($(`#${[i]}`).html() === "" ) {
-                    available.push(`${i}`);
-                }
+        for (let i = 0; i < 9; i++) { // check for which boxes are available
+            if ($(`#${[i]}`).html() === "" ) {
+                available.push(`${i}`);
             }
-            getRandom(available.length); // chooses a random number index of avalable array.
-            $(`#${available[randomNum]}`).html(`${computer}`);
+        }
+        getRandom(available.length); // chooses a random number index of avalable array.
+        $(`#${available[randomNum]}`).html(`${computer}`);
          
-            for (let i = 0; i < 9; i++) { // checks which boxes are available again
-                if ($(`#${[i]}`).html() === "" ) {
-                    available.push(`${i}`);
-                }
-            }        
+        for (let i = 0; i < 9; i++) { // checks which boxes are available again after computer choices
+            if ($(`#${[i]}`).html() === "" ) {
+                available.push(`${i}`);
+            }
+        }        
         
     }
     
     const checkForWin = function () {
        
-        // checking if X wins
+        // checking if person wins by checking if box equals to token person chose. 
         for (let i = 0; i < winningCombos.length; i++) {
             let a = winningCombos[i][0];
             let b = winningCombos[i][1];
@@ -238,7 +237,8 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
                 $('.buttons').css('display','none');
             }
     
-        } // checking for O
+        } // checking for computer
+
         for (let i = 0; i < winningCombos.length; i++) {
             let a = winningCombos[i][0];
             let b = winningCombos[i][1];
@@ -253,7 +253,8 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
                 $('.winning_message').css('height','275px');
                 $('.buttons').css('display','none');
             } 
-        } 
+        } // check for draw
+
         if ( ($('#0').html() !== "") && ($('#1').html() !== "") && ($('#2').html() !== "") && ($('#3').html() !== "") && ($('#4').html() !== "") && ($('#5').html() !== "") && ($('#6').html() !== "") && ($('#7').html() !== "") && ($('#8').html() !== "") && $('.winning_text').text() === "") {
                 console.log("It's a Draw!");
                 draw += 1;

@@ -225,6 +225,7 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
    
     if ($('.winning_text').html() !== "" ) {  // i can't place anymore token if there is a winning message
         
+
     } else if ( $(this).html() === "") { // if the particular box is empty
     
         $( this ).html(`${person}`); // player picks
@@ -256,7 +257,7 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
 
         } else  {
 
-            let randomBox = function() { // get random number from REMAINING boxes from chosen array
+            let randomBox = function() { // get random number index from REMAINING boxes from chosen array
 
                 console.log(`remaining ${remaining}`);
                 getRandom(remaining.length); 

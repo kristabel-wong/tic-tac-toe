@@ -24,5 +24,16 @@ Instructions
 
 ## Goodluck!
 
+*The Simpsons characters were made in css by [Chris Pattie](https://github.com/pattle/simpsons-in-css)* 
+
+Bugs 
+-------------------------
+*Bugs only exist in my simpsons-ai-harder.js file (not linked to html doc). These bugs have not been solved due to time restraints*
+
+1. Sometimes the computer will place twice. 
+2. Computer still places token after the player wins. 
+
+
+
 
 
