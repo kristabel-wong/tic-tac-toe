@@ -1,6 +1,6 @@
-$(document).ready(function () { 
 
-    const lisa = '<div id="lisa">' + 
+// html to be added into html once tokens are placed
+const lisa = '<div id="lisa">' + 
     '<div class="head">' +
     
     '<div class="no-border body head-main"></div>'+
@@ -69,7 +69,6 @@ $(document).ready(function () {
     '</div>' +
 '</div>';
 
-
 const bart = '<div id="bart">' +
 '<div class="head">' +
     '<div class="no-border body hair hair1"></div>' +
@@ -125,10 +124,8 @@ const bart = '<div id="bart">' +
 '</div>' +
 '</div>';
 
-const wins = '<img src="https://see.fontimg.com/api/renderfont4/p07r/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMTIxMjEyIiwiYmdjIjoiI0M5QUFBQSIsInQiOjF9/d2lucyE/simpsonfont.png" height="50px" alt="wins">';
 
 const drawImg = '<img src="./images/draw2.jpg" height="200px"> <img src="./images/its-a-draw.png" height="50">'
-
 
 
 //----------------------------------------------------//
@@ -150,20 +147,31 @@ let draw = 0;
 $('#draw').text(`${draw}`);
 
 
-$('#X').on('click', function () {
+
+
+// choosing tokens 
+
+
+$('#X').on('click', function () { // choosing Bart
     person = bart;
     computer = lisa;
-    personDance = '<img src="./images/bart-dance.gif" height="200px">';
+    personDance = '<img src="./images/bart-dance.gif" height="200px">'; // victory dances chosen
     computerDance = '<img src="./images/lisa-dance.gif" height="200px">';
-    winP = '<img src="./images/bart-win.png" height="50px">';
-    winC = '<img src="./images/lisa-win.png" height="50px">';
+    winP = '<img src="./images/bart-win.png" height="50px">'; // winning message set up
+    winC = '<img src="./images/comp-wins.png" height="40px">';
     personScore = '#playerX';
     compScore = '#playerO';
 
-    $('#lisaPlayer').attr("src", "./images/computer.png");
+    $('#lisaPlayer').attr("src", "./images/computer.png"); // make computer appear over lisa token
 
     if ( $('.box').html() === "") { // if the grid is empty, player token can be chosen. This way, it cannot be changed half way through
     }
+
+    // making sure all array have been empty 
+    console.log(available); 
+    console.log(remaining);
+    console.log(computerChoices);
+
 }) 
 
 
@@ -172,54 +180,231 @@ $('#O').on('click', function () { // choosing Lisa
     computer = bart;
     computerDance = '<img src="./images/bart-dance.gif" height="200px">';
     personDance = '<img src="./images/lisa-dance.gif" height="200px">';
-    winC = '<img src="./images/bart-win.png" height="50px">';
+    winC = '<img src="./images/comp-wins.png" height="40px">';
     winP = '<img src="./images/lisa-win.png" height="50px">';
     personScore = '#playerO';
     compScore = '#playerX';
 
-
-    $('#bartPlayer').attr("src", "./images/computer.png");
+    $('#bartPlayer').attr("src", "./images/computer.png"); // make computer appear over bart token
 
     if ( $('.box').html() === "") {
     }
     
+    console.log(available);
+    console.log(remaining);
+    console.log(computerChoices);
 })
 
 //AI function
 
-let randomNum = 0;
+let randomNum = -1; // just wanted to give a random number for argument sake
 
-function getRandom(max) {
+function getRandom(max) { // random number generated for comp choices
     randomNum = Math.floor(Math.random() * max);
 }
+
+// winning combos arrays if comp's first choice is either of the below boxes
+
+let zero = [1,2,3,4,6,8];
+let one = [0,2,4,7];
+let two = [0,1,5,8,4,6];
+let three = [0,6,4,5];
+let four = [3,5,1,7,0,8,2,6];
+let five = [4,3,2,8];
+let six = [7,8,0,3,2,4];
+let seven = [4,1,6,8];
+let eight = [7,6,2,5,0,4];
+
+let computerChoices = [];
+let remaining = [];
+let available = [];
 
 
 
 $('.box').on('click', function () { // applies to all box, but will choose specific box
-
-    if ($('.winning_text').text() !== "" ) {
-
-    } else if ( $(this).html() === "") {
-    let available = [];
-      
-            $( this ).html(`${person}`);
-       
-            for (let i = 0; i < 9; i++) { // check for which boxes are available
+   
+    if ($('.winning_text').html() !== "" ) {  // i can't place anymore token if there is a winning message
+        
+    } else if ( $(this).html() === "") { // if the particular box is empty
+    
+        $( this ).html(`${person}`); // player picks
+        
+        let checkAvailable = function () { 
+            available = [];   
+            for (let i = 0; i < 9; i++) { 
                 if ($(`#${[i]}`).html() === "" ) {
-                    available.push(`${i}`);
+                    available.push(Number(`${i}`));
                 }
             }
-            getRandom(available.length); // chooses a random number index of avalable array.
-            $(`#${available[randomNum]}`).html(`${computer}`);
-         
-            for (let i = 0; i < 9; i++) { // checks which boxes are available again
-                if ($(`#${[i]}`).html() === "" ) {
-                    available.push(`${i}`);
-                }
-            }        
+            console.log(`available ${available}`); 
+        }
         
+        checkAvailable(); // check for which boxes are available after person chooses
+        
+
+        console.log(computerChoices); // checks to see what computer has chosen
+        
+        if (computerChoices.length === 0) {  // computer making first choice
+            getRandom(available.length); // get random number from available boxes
+            console.log(available[randomNum]);
+            $(`#${available[randomNum]}`).html(`${computer}`); // place token
+            
+            computerChoices.push(available[randomNum]); // record choice
+            console.log(`Computer choices: ${computerChoices}`); 
+            
+            checkAvailable(); // check available again after computer choice
+
+        } else  {
+
+            let randomBox = function() { // get random number from REMAINING boxes from chosen array
+
+                console.log(`remaining ${remaining}`);
+                getRandom(remaining.length); 
+                $(`#${remaining[randomNum]}`).html(`${computer}`); 
+                computerChoices.push(remaining[randomNum]);
+                console.log(`Computer choices: ${computerChoices}`);
+
+            }
+
+            let availBox = function () { // place in available boxes (if none left in remaining)
+                $(`#${available[randomNum]}`).html(`${computer}`);
+                computerChoices.push(available[randomNum]);
+                console.log(`Computer choosing whats avail: ${computerChoices}`);
+
+            }
+
+
+            if (computerChoices[0] === 0 ) { // if comp's first choice was zero, please use zero array
+                checkAvailable(); // check whats available
+                remaining = []; // make sure its emptied before running the loop
+
+                for (let i = 0; i < zero.length; i++) { 
+                    if (available.includes(zero[i])) {
+                        remaining.push(zero[i]); // push into array if match
+
+                    } else if (remaining.length === 0)  { // if no remaining choices, choose whatever is available
+                        availBox();
+                    }
+                }
+
+                randomBox(); // get me a random number!
+                
+            } else if (computerChoices[0] === 1 ) {
+                checkAvailable();
+                remaining = [];
+
+                for (let i = 0; i < one.length; i++) {
+                    if (available.includes(one[i])) {
+                        remaining.push(one[i]);
+
+                    } else if (remaining.length === 0)  {
+                        availBox();
+                    }
+                }
+                randomBox();
+
+            } else if (computerChoices[0] === 2 ) {
+                checkAvailable();
+                remaining = [];
+
+                for (let i = 0; i < two.length; i++) {
+                    if (available.includes(two[i]))  {
+                        remaining.push(two[i]);
+
+                    } else if (remaining.length === 0) {
+                        availBox();
+                    }
+                }
+                randomBox();
+
+            } else if (computerChoices[0] === 3 ) {
+                checkAvailable();
+                remaining = [];
+
+                for (let i = 0; i < three.length; i++) {
+                    if (available.includes(three[i]))  {
+                        remaining.push(three[i]);
+
+                    } else if (remaining.length === 0) {
+                        availBox();
+                    }
+                }
+                randomBox();
+
+            } else if (computerChoices[0] === 4) {
+                checkAvailable();
+                remaining = [];
+
+                for (let i = 0; i < four.length; i++) {
+                    if (available.includes(four[i]))  {
+                        remaining.push(four[i]);
+                    
+                    } else if (remaining.length === 0)  {
+                        availBox();
+                    }
+                }
+                randomBox();
+
+            } else if (computerChoices[0] === 5) {
+                checkAvailable();
+                remaining = [];
+
+                for (let i = 0; i < five.length; i++) {
+                    if (available.includes(five[i]))  {
+                        remaining.push(five[i]);
+
+                    } else if (remaining.length === 0) {
+                        availBox();
+                    }
+                }
+                randomBox();
+
+            } else if (computerChoices[0] === 6) {
+                checkAvailable();
+                remaining = [];
+
+                for (let i = 0; i < six.length; i++) {
+                    if (available.includes(six[i])) {
+                        remaining.push(six[i]);
+
+                    } else if (remaining.length === 0) {
+                        availBox();
+                    }
+                }
+                randomBox();
+
+            } else if (computerChoices[0] === 7) {
+                checkAvailable();
+                remaining = [];
+
+                for (let i = 0; i < seven.length; i++) {
+                    if (available.includes(seven[i])) {
+                        remaining.push(seven[i]);                    
+
+                    } else if (remaining.length === 0) {
+                        availBox();
+                    }
+                }
+                randomBox();
+
+            } else if (computerChoices[0] === 8) {
+                checkAvailable();
+                remaining = [];
+
+                for (let i = 0; i < eight.length; i++) {
+                    if (available.includes(eight[i])) {
+                        remaining.push(eight[i]);
+                        
+                    } else if (remaining.length === 0) {
+                        availBox();
+                    }
+                }
+                randomBox();
+            }
+        }
     }
-    
+
+
     const checkForWin = function () {
        
         // checking if X wins
@@ -236,6 +421,10 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
                 $('.modal-content').css('height','375px');
                 $('.winning_message').css('height','275px');
                 $('.buttons').css('display','none');
+
+                computerChoices = [];
+                remaining = [];
+                available = [];
             }
     
         } // checking for O
@@ -252,6 +441,10 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
                 $('.modal-content').css('height','375px');
                 $('.winning_message').css('height','275px');
                 $('.buttons').css('display','none');
+
+                computerChoices = [];
+                remaining = [];
+                available = [];
             } 
         } 
         if ( ($('#0').html() !== "") && ($('#1').html() !== "") && ($('#2').html() !== "") && ($('#3').html() !== "") && ($('#4').html() !== "") && ($('#5').html() !== "") && ($('#6').html() !== "") && ($('#7').html() !== "") && ($('#8').html() !== "") && $('.winning_text').text() === "") {
@@ -261,6 +454,10 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
                 $('.winning_text').html(`${drawImg}`);
                 $('#myModal').css('display','block');
                 $('.buttons').css('display','none');
+
+                computerChoices = [];
+                remaining = [];
+                available = [];
             }
         
     }
@@ -314,6 +511,15 @@ $('.close, .playAgain, .reset').on('click', function () { // these three functio
     $('#myModal').css('display','none');
     $('.buttons').css('display','block');
     $('#choosePlayer').css('display','none');
+
+    computerChoices = [];
+    remaining = [];
+    available = [];
+
+    console.log(available);
+    console.log(remaining);
+    console.log(computerChoices);
+
 });
 
 
@@ -324,7 +530,7 @@ $('#X, #O').on('click', function () {
 
 
 
-});
+// });
 
 
 
