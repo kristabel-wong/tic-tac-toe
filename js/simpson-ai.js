@@ -133,27 +133,33 @@ const drawImg = '<img src="./images/draw2.jpg" height="200px"> <img src="./image
 
 //----------------------------------------------------//
     
-let playerOTurn;
+let computerTurn;
+let person;
+let computer;
 
 let scoresX = 0;
-$('#playerX').text(`${scoresX}`);
-let scoresO = 0;
-$('#playerO').text(`${scoresO}`);
+$('#playerX').text(`${scoresX}`); // Bart
+let scoresO = 0; 
+$('#playerO').text(`${scoresO}`); // Lisa
 let draw = 0;
 $('#draw').text(`${draw}`);
 
-$('#X').on('click', function () { // choosing player token
-    
-    if ( $('.box').html() === "") { // if the grid is empty, player token can be chosen. This way, it cannot be changed half way through
-        playerOTurn = false;
-    }
-    
-})
 
-$('#O').on('click', function () { // choosing player token
-    
+$('#X').on('click', function () {
+    person = bart;
+    computer = lisa;
+
+    if ( $('.box').html() === "") { // if the grid is empty, player token can be chosen. This way, it cannot be changed half way through
+        computerTurn = false;
+    }
+}) 
+
+
+$('#O').on('click', function () { // choosing Lisa
+    person = lisa;
+    computer = bart;
     if ( $('.box').html() === "") {
-        playerOTurn = true;
+        computerTurn = false;
     }
     
 })
@@ -166,14 +172,14 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
 
     } else if ( $(this).html() === ""){
 
-        if (playerOTurn === true) {
-            $( this ).html(`${lisa}`);
+        if (computerTurn === true) {
+            $( this ).html(`${computer}`);
             $( this ).css('padding-top','20px');
-            playerOTurn = false;
+            computerTurn = false;
         } else {
-            $( this ).html(`${bart}`);
+            $( this ).html(`${person}`);
             $( this ).css('padding-top','11px');
-            playerOTurn = true;
+            computerTurn = true;
         }
     }
 
@@ -186,11 +192,10 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
             let b = winningCombos[i][1];
             let c = winningCombos[i][2];
 
-            if ($(`#${a}`).html() === bart && $(`#${b}`).html() === bart && $(`#${c}`).html() === bart && $('.winning_text').text() === "") { // if the text of the id box matches
-                console.log('Player X Wins!');
+            if ($(`#${a}`).html() === person && $(`#${b}`).html() === person && $(`#${c}`).html() === person && $('.winning_text').text() === "") { // if the text of the id box matches
                 scoresX +=1;
                 $('#playerX').text(`${scoresX}`);
-                $('.winning_text').html(`${bart} ${wins}`);
+                $('.winning_text').html(`${person} ${wins}`);
                 $('#myModal').css({'display':'block', 'padding-top':'288px'});
                 $('.modal-content').css('height','310px');
                 $('.winning_message').css('height','210px');
@@ -203,10 +208,10 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
             let b = winningCombos[i][1];
             let c = winningCombos[i][2];
 
-            if ($(`#${a}`).html() === lisa && $(`#${b}`).html() === lisa && $(`#${c}`).html() === lisa && $('.winning_text').text() === "") { // if the text of the id box matches
+            if ($(`#${a}`).html() === computer && $(`#${b}`).html() === computer && $(`#${c}`).html() === computer && $('.winning_text').text() === "") { // if the text of the id box matches
                 scoresO +=1;
                 $('#playerO').text(`${scoresO}`);
-                $('.winning_text').html(`${lisa} ${wins}`);
+                $('.winning_text').html(`${computer} ${wins}`);
                 $('#myModal').css({'display':'block', 'padding-top':'288px'});
                 $('.modal-content').css('height','300px');
                 $('.winning_message').css('height','202px');
