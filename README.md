@@ -18,6 +18,8 @@ Instructions
 4. Click `REMATCH` to play more rounds. The scores will be kept on either side. Draw scores below the board
 5. Click `RESET` to reset the board and clear the scores.
 
+***Try out the audio too!***
+
 Goodluck!
 
 
