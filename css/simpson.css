@@ -7,10 +7,9 @@
     margin: 0 auto;
     width: 500px;
     height: 500px;
-    position: absolute;
-    top: 275px;
-    left: 703px;
-    line-height: 515px;
+    position: relative;
+    top: -510px;
+    line-height: 400px;
     background-color: rgb(246,216,1,0.8);
     z-index: 1;
     display: block;
@@ -374,4 +373,14 @@ button {
     100% { background-position: 0 0; }
 }
    
+.AI {
+    float: left;
+    position: relative;
+    top: -260px;
+}
 
+.twoPlayer {
+    float: right;
+    position: relative;
+    top: -260px;
+}

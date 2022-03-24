@@ -282,8 +282,6 @@ $('#X, #O').on('click', function () {
 
 
 
-
-
 });
 
 
