@@ -133,9 +133,14 @@ const drawImg = '<img src="./images/draw2.jpg" height="200px"> <img src="./image
 
 //----------------------------------------------------//
     
-let computerTurn;
+// assigns characters after clicking
 let person;
+let personDance;
 let computer;
+let computerDance;
+let winP;
+let winC;
+
 
 let scoresX = 0;
 $('#playerX').text(`${scoresX}`); // Bart
@@ -148,9 +153,14 @@ $('#draw').text(`${draw}`);
 $('#X').on('click', function () {
     person = bart;
     computer = lisa;
+    personDance = '<img src="./images/bart-dance.gif" height="200px">';
+    computerDance = '<img src="./images/lisa-dance.gif" height="200px">';
+    winP = '<img src="./images/bart-win.png" height="50px">';
+    winC = '<img src="./images/lisa-win.png" height="50px">';
+
+    $('#lisaPlayer').attr("src", "./images/computer.png");
 
     if ( $('.box').html() === "") { // if the grid is empty, player token can be chosen. This way, it cannot be changed half way through
-        computerTurn = false;
     }
 }) 
 
@@ -158,31 +168,52 @@ $('#X').on('click', function () {
 $('#O').on('click', function () { // choosing Lisa
     person = lisa;
     computer = bart;
+    computerDance = '<img src="./images/bart-dance.gif" height="200px">';
+    personDance = '<img src="./images/lisa-dance.gif" height="200px">';
+    winC = '<img src="./images/bart-win.png" height="50px">';
+    winP = '<img src="./images/lisa-win.png" height="50px">';
+
+    $('#bartPlayer').attr("src", "./images/computer.png");
+
     if ( $('.box').html() === "") {
-        computerTurn = false;
     }
     
 })
 
-//attempt two - cutting down the functions within functions
+//AI function
+
+let randomNum = 0;
+
+function getRandom(max) {
+    randomNum = Math.floor(Math.random() * max);
+}
+
+
 
 $('.box').on('click', function () { // applies to all box, but will choose specific box
 
     if ($('.winning_text').text() !== "" ) {
 
-    } else if ( $(this).html() === ""){
-
-        if (computerTurn === true) {
-            $( this ).html(`${computer}`);
-            $( this ).css('padding-top','20px');
-            computerTurn = false;
-        } else {
+    } else if ( $(this).html() === "") {
+    let available = [];
+      
             $( this ).html(`${person}`);
-            $( this ).css('padding-top','11px');
-            computerTurn = true;
-        }
+       
+            for (let i = 0; i < 9; i++) { // check for which boxes are available
+                if ($(`#${[i]}`).html() === "" ) {
+                    available.push(`${i}`);
+                }
+            }
+            getRandom(available.length); // chooses a random number index of avalable array.
+            $(`#${available[randomNum]}`).html(`${computer}`);
+         
+            for (let i = 0; i < 9; i++) { // checks which boxes are available again
+                if ($(`#${[i]}`).html() === "" ) {
+                    available.push(`${i}`);
+                }
+            }        
+        
     }
-
     
     const checkForWin = function () {
        
@@ -195,10 +226,10 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
             if ($(`#${a}`).html() === person && $(`#${b}`).html() === person && $(`#${c}`).html() === person && $('.winning_text').text() === "") { // if the text of the id box matches
                 scoresX +=1;
                 $('#playerX').text(`${scoresX}`);
-                $('.winning_text').html(`${person} ${wins}`);
+                $('.winning_text').html(`${personDance} ${winP}`);
                 $('#myModal').css({'display':'block', 'padding-top':'288px'});
-                $('.modal-content').css('height','310px');
-                $('.winning_message').css('height','210px');
+                $('.modal-content').css('height','375px');
+                $('.winning_message').css('height','275px');
                 $('.buttons').css('display','none');
             }
     
@@ -211,10 +242,10 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
             if ($(`#${a}`).html() === computer && $(`#${b}`).html() === computer && $(`#${c}`).html() === computer && $('.winning_text').text() === "") { // if the text of the id box matches
                 scoresO +=1;
                 $('#playerO').text(`${scoresO}`);
-                $('.winning_text').html(`${computer} ${wins}`);
+                $('.winning_text').html(`${computerDance} ${winC}`);
                 $('#myModal').css({'display':'block', 'padding-top':'288px'});
-                $('.modal-content').css('height','300px');
-                $('.winning_message').css('height','202px');
+                $('.modal-content').css('height','375px');
+                $('.winning_message').css('height','275px');
                 $('.buttons').css('display','none');
             } 
         } 
@@ -277,10 +308,13 @@ $('#modalB').on('click', function () {
 $('.close, .playAgain, .reset').on('click', function () { // these three function removes modal box
     $('#myModal').css('display','none');
     $('.buttons').css('display','block');
+    $('#choosePlayer').css('display','none');
 });
 
 
-
+$('#X, #O').on('click', function () {
+    $('#choosePlayer').css('display','none');
+})
 
 
 

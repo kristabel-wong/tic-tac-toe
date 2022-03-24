@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/lisa.css">
     <script src="js/jquery.js"></script>
     <script src="js/simpson.js"></script>
+    <!-- <script src="js/simpson-ai.js"></script> -->
     <title>SIMPSON</title>
 </head>
 <body> 
@@ -21,8 +22,14 @@
     <div class="content">
     <h1><a href="https://www.fontspace.com/category/simpsons"><img class="title" src="./images/tic-tac-toe.png" alt="tic tac toe"></a></h1>
     
+    <div id="choosePlayer">
+    
+            <img src="./images/choose.png" height="50px" alt="Choose Your Player">
+    
+    </div>
+    
     <!-- Trigger/Open The Modal -->
-<!-- <button id="modalB">Open Modal</button> -->
+<!-- <button id="choosePlayerb">Open Modal</button> -->
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -57,7 +64,7 @@
 
     <div class="tokens"> 
         <div id="player1">
-            <img class="characters" src="./images/player.png" alt="Player"></a>
+            <img class="characters" id="bartPlayer" src="./images/player.png" alt="Player"></a>
             <span class="hvr-pulse" id="X"><div id="bart">
                 <div class="head">
                     <div class="no-border body hair hair1"></div>
@@ -118,7 +125,7 @@
             </div>
         </div>  
         <div id="player2">
-            <img class="characters" src="./images/player.png" alt="Player"></a>
+            <img class="characters" id="lisaPlayer" src="./images/player.png" alt="Player"></a>
             <span class="hvr-pulse" id="O">
                 <div id="lisa">
                 <div class="head">

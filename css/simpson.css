@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap');
 
 
+/* ----------- choose your player ------------------*/
+
+#choosePlayer {
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 275px;
+    left: 703px;
+    line-height: 515px;
+    background-color: rgb(246,216,1,0.8);
+    z-index: 1;
+    display: block;
+  }
+
 /* ------------------ modal------------------  */
 
 /* The Modal (background) */
@@ -53,7 +68,9 @@
 
   .winning_text {
     text-align: center;
-    width: 100%;
+    width: 350px;
+    position: relative;
+    margin: 0 auto;
     font-size: 250%;
     font-weight: bold;
     color: white;
@@ -98,7 +115,7 @@ audio {
   /* -------------------------------------------  */
 
 body {
-    width: 900px;
+    width: 950px;
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
     font-weight: 100;
@@ -138,8 +155,8 @@ h1, h2 {
 .tokens {
     margin: 0 auto;
     position: relative;
-    top: -345px;
-    width: 850px;
+    top: -365px;
+    width: 880px;
 }
 
 span {
@@ -257,6 +274,7 @@ span {
     /* background-color: rgba(255,255,255,1); */
     font-family: 'Montserrat', sans-serif;
     font-weight: 100;
+    padding-top: 15px;
 }
 
 .zero, .one, .three, .four, .six, .seven {

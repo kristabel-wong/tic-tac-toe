@@ -129,6 +129,11 @@ const wins = '<img src="https://see.fontimg.com/api/renderfont4/p07r/eyJyIjoiZnM
 
 const drawImg = '<img src="./images/draw2.jpg" height="200px"> <img src="./images/its-a-draw.png" height="50">'
 
+bartDance = '<img src="./images/bart-dance.gif" height="200px">';
+lisaDance = '<img src="./images/lisa-dance.gif" height="200px">';
+winBart = '<img src="./images/bart-win.png" height="50px">';
+winLisa = '<img src="./images/lisa-win.png" height="50px">';
+
 
 //----------------------------------------------------//
     
@@ -167,11 +172,9 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
 
         if (playerOTurn === true) {
             $( this ).html(`${lisa}`);
-            $( this ).css('padding-top','20px');
             playerOTurn = false;
         } else {
             $( this ).html(`${bart}`);
-            $( this ).css('padding-top','11px');
             playerOTurn = true;
         }
     }
@@ -189,10 +192,10 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
                 console.log('Player X Wins!');
                 scoresX +=1;
                 $('#playerX').text(`${scoresX}`);
-                $('.winning_text').html(`${bart} ${wins}`);
+                $('.winning_text').html(`${bartDance} ${winBart}`);
                 $('#myModal').css({'display':'block', 'padding-top':'288px'});
-                $('.modal-content').css('height','310px');
-                $('.winning_message').css('height','210px');
+                $('.modal-content').css('height','375px');
+                $('.winning_message').css('height','275px');
                 $('.buttons').css('display','none');
             }
     
@@ -205,10 +208,10 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
             if ($(`#${a}`).html() === lisa && $(`#${b}`).html() === lisa && $(`#${c}`).html() === lisa && $('.winning_text').text() === "") { // if the text of the id box matches
                 scoresO +=1;
                 $('#playerO').text(`${scoresO}`);
-                $('.winning_text').html(`${lisa} ${wins}`);
+                $('.winning_text').html(`${lisaDance} ${winLisa}`);
                 $('#myModal').css({'display':'block', 'padding-top':'288px'});
-                $('.modal-content').css('height','300px');
-                $('.winning_message').css('height','202px');
+                $('.modal-content').css('height','375px');
+                $('.winning_message').css('height','275px');
                 $('.buttons').css('display','none');
             } 
         } 
@@ -273,7 +276,9 @@ $('.close, .playAgain, .reset').on('click', function () { // these three functio
     $('.buttons').css('display','block');
 });
 
-
+$('#X, #O').on('click', function () {
+    $('#choosePlayer').css('display','none');
+})
 
 
 
