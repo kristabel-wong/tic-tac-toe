@@ -503,11 +503,6 @@ $('.reset, .reset1').on('click', function () {
 
 //----------------------- modal --------------------------//
 
-$('#modalB').on('click', function () {
-    $('#myModal').css('display','block');
-    $('.buttons').css('display','none');
-});
-
 $('.close, .playAgain, .reset').on('click', function () { // these three function removes modal box
     $('#myModal').css('display','none');
     $('.buttons').css('display','block');
@@ -523,6 +518,7 @@ $('.close, .playAgain, .reset').on('click', function () { // these three functio
 
 });
 
+// -----------------------------------------------------//
 
 $('#X, #O').on('click', function () {
     $('#choosePlayer').css('display','none');

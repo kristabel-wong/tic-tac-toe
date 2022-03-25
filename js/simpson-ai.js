@@ -230,11 +230,11 @@ $('.box').on('click', function () { // applies to all box, but will choose speci
             if ($(`#${a}`).html() === person && $(`#${b}`).html() === person && $(`#${c}`).html() === person && $('.winning_text').text() === "") { // if the text of the id box matches
                 scoresX +=1;
                 $(personScore).text(`${scoresX}`);
-                $('.winning_text').html(`${personDance} ${winP}`);
-                $('#myModal').css({'display':'block', 'padding-top':'288px'});
-                $('.modal-content').css('height','375px');
+                $('.winning_text').html(`${personDance} ${winP}`); // adds the corresponding victory dance
+                $('#myModal').css({'display':'block', 'padding-top':'288px'}); // displays my modal
+                $('.modal-content').css('height','375px'); // adds the css property (could have been done in css - this was before i found an image for the draw message)
                 $('.winning_message').css('height','275px');
-                $('.buttons').css('display','none');
+                $('.buttons').css('display','none'); // removes the button from the bottom of the page so it looks like its popped up into the modal box
             }
     
         } // checking for computer
@@ -281,7 +281,7 @@ const winningCombos = [
     [2,4,6]
 ];
 
-$('.playAgain, .playAgain1').on('click', function () {  
+$('.playAgain, .playAgain1').on('click', function () {  // play again and empties the grid, winning text and 
     $('.box').empty();
     $('.winning_text').empty();
     $('.gameboard').css('opacity','1');
@@ -289,7 +289,7 @@ $('.playAgain, .playAgain1').on('click', function () {
 })
 
 
-$('.reset, .reset1').on('click', function () {
+$('.reset, .reset1').on('click', function () { // reset all scores and grid & winning message
     let scoresX = 0;
     $('#playerX').text(`${scoresX}`);
     let scoresO = 0;
@@ -306,16 +306,13 @@ $('.reset, .reset1').on('click', function () {
 
 //----------------------- modal --------------------------//
 
-$('#modalB').on('click', function () {
-    $('#myModal').css('display','block');
-    $('.buttons').css('display','none');
-});
-
 $('.close, .playAgain, .reset').on('click', function () { // these three function removes modal box
     $('#myModal').css('display','none');
     $('.buttons').css('display','block');
     $('#choosePlayer').css('display','none');
 });
+
+// --------------------------------------------------------//
 
 
 $('#X, #O').on('click', function () {
