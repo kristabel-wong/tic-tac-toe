@@ -33,7 +33,9 @@ Bugs
 1. Sometimes the computer will place twice. 
 2. Computer still places token after the player wins. 
 
+## Screenshot
 
+![Screenshot](./images/screenshot.png)
 
 
 
